@@ -4,7 +4,8 @@ import {
   TouchableOpacity, // Para botões clicáveis (= button)
   ScrollView, // Para a área principal com scroll,
   StyleSheet // Para aplicar estilo na página
- } from 'react-native'; // Impor                     ta os componentes View e Text
+ } from 'react-native'; // Importa os componentes View e Text
+ import {Link} from 'expo-router';
  
 export default function Index() {
  return (
@@ -14,22 +15,26 @@ export default function Index() {
         <View style={styles.topo}>
 
         { /* Logo do sistema */}
-          <Text style={styles.logo}>TechEduca</Text>
+          <Link href='/'>
+            <Text style={styles.logoP1}>Tech</Text>
+            <Text style={styles.logoP2}>Educa</Text>
+          </Link>
 
           { /* Menu de Navegação */}
           <View style={styles.menu}>
-            <Text style={[styles.menuItem, styles.ativo]}> Início </Text> { /*=========== Item Ativo =============*/}
-            <Text style={styles.menuItem}> Sobre </Text>
-            <Text style={styles.menuItem}> Contato </Text>
-
-          
-            { /* Botão de Login */}
-          <TouchableOpacity style={styles.btnLogin}>
-            <Text style={styles.textoBotao}>Login</Text>
-          </TouchableOpacity>
-
+            <Link href='/'>
+              <Text style={[styles.menuItem, styles.ativo]}> Início </Text>
+            </Link>
+            <Link href='/sobre'>
+              <Text style={styles.menuItem}> Sobre </Text>
+            </Link>
+            <Link href='/contato'>
+              <Text style={styles.menuItem}> Contato </Text>
+            </Link>
+            <Link href='/login'>
+              <Text style={styles.menuItem}>Login</Text>
+            </Link>
           </View>
-
         </View>
 
         { /*=========== HERO =============*/}
@@ -50,14 +55,18 @@ export default function Index() {
           </Text>
 
           { /* Botão principal */}
-          <TouchableOpacity style= {styles.btnPrimario}>
-            <Text>Fazer Login</Text>
-          </TouchableOpacity>
-
+          <Link href='/login'>
+            <TouchableOpacity style= {styles.btnPrimario}>
+              <Text style= {styles.textoBotaoPri}>Fazer Login</Text>
+            </TouchableOpacity>
+          </Link>
+          
           { /* Botão secundário */}
-          <TouchableOpacity style= {styles.btnSecundario}>
-            <Text>Fale Conosco</Text>
-          </TouchableOpacity>
+          <Link href='contato'>
+            <TouchableOpacity style= {styles.btnSecundario}>
+              <Text style= {styles.textoBotaoSec}>Fale Conosco</Text>
+            </TouchableOpacity>
+          </Link>
 
           </View>
         </View>
@@ -109,7 +118,9 @@ export default function Index() {
           <Text style={styles.textoRodape}> 2026 TechEduca. Todos os direitos reservados.</Text>
 
           { /* Links de Contato */}
-          <Text style={styles.linkRodape}>Entre em contato</Text>
+          <Link href='/contato'>
+            <Text style={styles.linkRodape}>Entre em contato</Text>'
+          </Link>
         </View>
 
     </ScrollView>
@@ -125,8 +136,14 @@ const styles = StyleSheet.create(
       gap: 10,
     },
 
-    logo: {
+    logoP1: {
       color:'#ffffff',
+      fontSize:24,
+      fontWeight: 'bold',
+    },
+
+    logoP2: {
+      color:'#ff6a00',
       fontSize:24,
       fontWeight: 'bold',
     },
@@ -134,7 +151,7 @@ const styles = StyleSheet.create(
     menu: {
       marginTop: 10,
       alignItems: 'center',
-      gap: 8,
+      gap: 10,
     },
 
     menuItem: {
@@ -159,10 +176,13 @@ const styles = StyleSheet.create(
       backgroundColor: '#ffffff',
       textAlign: 'center',
       padding: 30,
+      justifyContent: 'center'
     },
 
     heroContent: {
-      alignItems: 'center'
+      alignItems: 'center',
+      gap: 10,
+      width: '100%'
     },
 
     heroTitulo: {
@@ -187,8 +207,8 @@ const styles = StyleSheet.create(
       paddingHorizontal:10,
       paddingVertical: 20,
       borderRadius: 8,
-      textDecorationLine: 'none',
-      marginTop: 10
+      marginBottom: 10,
+      minWidth: 160,
     },
 
     btnSecundario: {
@@ -199,12 +219,18 @@ const styles = StyleSheet.create(
       borderRadius: 8,
       borderColor: '#1a4db3',
       borderWidth: 2,
-      textDecorationLine: 'none',
       marginTop: 10,
+      minWidth: 160
     } ,
 
-    textoBotao : {
+    textoBotaoPri : {
       color: '#ffffff',
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+
+    textoBotaoSec : {
+      color: '#222',
       fontWeight: 'bold',
       textAlign: 'center',
     },
@@ -227,6 +253,7 @@ const styles = StyleSheet.create(
 
     cards:{
       marginTop: 20,
+      gap: 15,
     },
 
     card : {
@@ -235,7 +262,13 @@ const styles = StyleSheet.create(
       borderRadius: 8,
       marginBottom: 10,
       elevation: 3,
-      boxShadow: '#222'
+      shadowColor:'#000',
+      shadowOpacity: 0.08,
+      shadowRadius: 4,    
+      textShadowOffset: {
+        width: 0,
+        height: 3
+      },
     },
 
     cardTitulo: {
@@ -257,6 +290,7 @@ const styles = StyleSheet.create(
       backgroundColor: '#1a4db3',
       padding: 20,
       alignItems: 'center',
+      gap: 8,
     },
 
     textoRodape: {
