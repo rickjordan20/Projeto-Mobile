@@ -107,7 +107,7 @@ export default function Index() {
             </Text>
           </View> 
 
-  '       </View>
+         </View>
           </View>
         </View>
 
