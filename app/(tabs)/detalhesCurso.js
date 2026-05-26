@@ -18,6 +18,7 @@ import {
     descricao,
     ch,
     objetivo,
+    publico,
     conteudos,
     modalidade,
     nivel
@@ -70,10 +71,46 @@ import {
                     {descricao}
                 </Text>
 
-                <View style={styles.infoCurso}>
-                    <Text style={styles.infoLabel}>CH: </Text>
+                <View style={styles.infoBox}>
+                    <Text style={styles.infoLabel}>CH</Text>
                     <Text style={styles.infoValor}> {ch} </Text>
                 </View>
+
+                <View style={styles.infoBox}>
+                    <Text style={styles.infoLabel}>Nível</Text>
+                    <Text style={styles.infoValor}> {nivel} </Text>
+                </View>
+
+                <View style={styles.secaoDetalhe}>
+                    <Text style={styles.subtitulo}>Modalidade</Text>
+                    <Text style={styles.textoDetalhe}> {modalidade} </Text>
+                </View>
+
+                <View style={styles.secaoDetalhe}>
+                    <Text style={styles.subtitulo}>Objetivo do curso </Text>
+                    <Text style={styles.textoDetalhe}> {objetivo} </Text>
+                </View>
+
+                <View style={styles.secaoDetalhe}>
+                    <Text style={styles.subtitulo}> Pra quem é esse curso? </Text>
+                    <Text style={styles.textoDetalhe}> {publico} </Text>
+                </View>
+
+                <View style={styles.secaoDetalhe}>
+                    <Text style={styles.subtitulo}>Conteudos abordados </Text>
+                    <Text style={styles.textoDetalhe}> {conteudos} </Text>
+                </View>
+                
+                <Link href='/cursos' asChild>
+                <TouchableOpacity style={styles.btnVoltar}>
+                    <Text style={styles.textoBtn}>
+                        Voltar para Cursos
+                    </Text>
+                </TouchableOpacity>
+                </Link>
+
+
+
 
             </View>
 
@@ -213,7 +250,98 @@ import {
         fontWeight: 'bold'
       },
 
-  
+      container: {
+        backgroundColor: '#f5f5f5',
+        padding: 20,
+      },
+
+      cardDetalhes: {
+        backgroundColor: 'white',
+        padding: 25,
+        borderRadius: 10,
+        elevation: 3,
+        shadowColor:"#000",
+        shadowRadius: 4,
+        shadowOffset: {width: 0, height: 3}
+
+      },
+
+      etiqueta: {
+        backgroundColor: '#ff6a00',
+        color: '#ffffff',
+        alignSelf: 'center',
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        borderRadius: 20,
+        fontWeight: 'bold',
+        marginTop: 15,
+      },
+
+      tituloCurso: {
+        color: '#1a4db3',
+        fontSize: 28,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 15,
+      },
+
+      descricaoCurso: {
+        color: "#222",
+        fontSize: 16,
+        lineHeight: 24,
+        textAlign: 'center',
+        marginBottom: 20,
+      },
+
+      infoBox: {
+        backgroundColor: '#f5f5f5',
+        padding: 15,
+        borderRadius: 8,
+        marginBottom: 20,
+        gap: 12,
+      },
+
+      secaoDetalhe: {
+        marginBottom: 20,
+      },
+
+      infoLabel: {
+        color: '#1a4db3',
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginBottom: 8,
+        textAlign: 'center',
+      },
+
+      infoValor: {
+        color: "#222",
+        fontSize: 16,
+        lineHeight: 24,
+        textAlign: 'center',
+        marginBottom: 20,
+      },
+
+      subtitulo: {
+        color: '#1a4db3',
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginBottom: 8,
+        textAlign: 'center',
+      },
+
+      btnVoltar: {
+        backgroundColor: '#1a4db3',
+        paddingVertical: 12,
+        borderRadius: 8,
+        marginTop: 10,
+        alignItems: 'center'
+      },
+
+      textoBtn: {
+        color: 'white',
+        fontWeight: 'bold',
+      },    
+
       rodape: {
         backgroundColor: '#1a4db3',
         padding: 20,
