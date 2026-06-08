@@ -10,53 +10,25 @@ import {
    } from 'react-native'; // Importa os componentes View e Text
    import {useState} from 'react';
    import {Link} from 'expo-router';
+   import cursosJson from '../../assets/data/cursos.json';
    
   export default function Cursos() {
-    const cursos = [
-      {
-        id: '1',
-        titulo: 'Desenvolvimento WEB',
-        img: require('../../assets/images/desweb.jpg'),
-        url: '/curso1',
-        descricao: 'Aprenda HTML, CSS, Javascript e práticas modernas de desenvolvimento',
-        ch: 40,
-        objetivo: 'Desenvolver páginas web modernas, responsivas e organizadas.',
-        publico: 'Indicado para estudantes iniciantes que desejam aprender desenvolvimento web.',
-        conteudo: 'HTML, CSS, JavaScript, responsividade, organização de arquivos e boas práticas.',
-        modalidade: 'Presencial com práticas em laboratório.',
-        nivel: 'Iniciante'
-      },
-
-      {
-        id: '2',
-        titulo: 'Informática Básica',
-        img: require('../../assets/images/info.jpg'),
-        url: '/curso2',
-        descricao: 'Domine o uso do computador e aplicativos essenciais',
-        ch: 30,
-        objetivo: 'Capacitar o aluno para utilizar o computador de forma segura, produtiva e organizada.',
-        publico: 'Indicado para quem deseja desenvolver conhecimentos básicos em informática.',
-        conteudo: 'Windows, internet, e-mail, organização de arquivos, Word, Excel e PowerPoint básico.',
-        modalidade: 'Presencial',
-        nivel: 'Básico'
-      },
-      
-      {
-        id: '3',
-        titulo: 'Desenvolvimento de Games',
-        img: require('../../assets/images/desgame.webp'),
-        url: '/curso3',
-        descricao: 'Aprenda a desenvolver games de forma legal e criativa',
-        ch: 80,
-        objetivo: 'Introduzir conceitos de criação de jogos, lógica de programação e desenvolvimento interativo.',
-        publico: 'Indicado para estudantes interessados em games, programação e criatividade digital.',
-        conteudo: 'Lógica de jogos, personagens, cenários, interatividade, mecânicas básicas e publicação de protótipos.',
-        modalidade: 'Presencial com atividades práticas',
-        nivel: 'Intermediário'
-      },
-
-
-    ];
+    // Cria um objeto JS como se fosse um dicionário para armazenar as imagens
+    const imagensCursos = {
+      'desweb.jpg' : require('../../assets/images/desweb.jpg'),
+      'info.jpg': require('../../assets/images/info.jpg'),
+      'desgame.webp': require('../../assets/images/desgame.webp'),
+    };
+    // Para cada curso em cursosJson:
+    //  Junta tudo de cursos.json + caminho de cada imagem em imagensCursos
+    const cursos = cursosJson.map((curso) =>
+    (
+    {
+      ...curso,
+      img: imagensCursos[curso.img],
+    }
+    )
+    );
 
     const [busca, setBusca] = useState('');
 

@@ -35,7 +35,22 @@ import {
           </View>
 
           { /*=========== CONTEÚDO DA PÁGINA =============*/}
-          
+          <View style={styles.sobre}>
+              <Text style={styles.titulo}>Sobre a TechEduca</Text>
+              <Text style={styles.texto}>A TechEduca é uma escola de tecnologia
+            focada em formação prática</Text>
+
+              <Text style={styles.subtitulo}>Nossa missão</Text>
+              <Text style={styles.texto}>Transformar vidas por meio da educação tecnológica</Text>
+
+              <Text style={styles.subtitulo}>Nossos Valores</Text>
+              <View style={styles.lista}>
+                  <Text style={styles.itemLista}>• Compromisso</Text>
+                  <Text style={styles.itemLista}>• Inovação</Text>
+                  <Text style={styles.itemLista}>• Transparência</Text>
+
+              </View>
+          </View>
 
           { /*=========== RODAPÉ =============*/}
           { /* Parte final da página */}
@@ -89,7 +104,43 @@ import {
         color: '#ff6a00',
       },
       
-      
+      sobre: {
+        padding: 20,
+        backgroundColor: "#ffffff"
+      },
+
+      titulo: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginBottom: 15,
+        textAlign: 'center'
+      },
+
+      subtitulo: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 20, 
+        marginBottom: 8,
+        textAlign: 'center'
+      },
+
+      texto: {
+        fontSize: 16,
+        lineHeight: 24,
+        textAlign: 'center'
+      },
+
+      lista: {
+        marginTop: 10,
+        alignItems: 'center'
+      },
+
+      itemLista: {
+        fontSize: 16,
+        marginBottom: 6,
+      },
+
+
      
   
       rodape: {
