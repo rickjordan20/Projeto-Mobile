@@ -7,8 +7,68 @@ import {
     TextInput
    } from 'react-native'; // Importa os componentes View e Text
    import {Link} from 'expo-router';
+   import {useState} from 'react';
    
   export default function Cadastro() {
+    const[nome,setNome] = useState('');
+    const[email,setEmail] = useState('');
+    const[senha,setSenha] = useState('');
+    const[confirmarSenha,setConfirmarSenha] = useState('');
+
+    const[mensagemSistema,setMensagemSistema] = useState('');
+    const[tipoMensagem,setTipoMensagem] = useState('');
+
+   function validarCadastro(){
+    if(nome === ''){
+      setMensagemSistema("Digite seu nome!");
+      setTipoMensagem("erro");
+      return
+    }
+
+    if(/\d/.test(nome)){
+      setMensagemSistema("O nome não pode conter número!");
+      setTipoMensagem("erro");
+      return
+    }
+
+    if(email === ''){
+      setMensagemSistema("Digite seu email!");
+      setTipoMensagem("erro");
+      return
+    }
+    if(!email.includes("@") || !email.includes(".com")){
+      setMensagemSistema("Digite um e-mail válido!");
+      setTipoMensagem("erro");
+      return
+    }
+
+    if(senha === ''){
+      setMensagemSistema("Digite sua senha!");
+      setTipoMensagem("erro");
+      return
+    }
+    if(senha.length < 6 ){
+      setMensagemSistema("A senha deve ter pelo menos 6 caracteres!");
+      setTipoMensagem("erro");
+      return
+    }
+
+    if(confirmarSenha === ''){
+      setMensagemSistema("Digite novamente sua senha!");
+      setTipoMensagem("erro");
+      return
+    }
+    if(confirmarSenha.length < 6 ){
+      setMensagemSistema("A senha deve ter pelo menos 6 caracteres!");
+      setTipoMensagem("erro");
+      return
+    }
+    if(!confirmarSenha.includes(senha)){
+      setMensagemSistema("As senhas devem ser iguais.");
+      setTipoMensagem("erro");
+      return
+    }
+  }
    return (
       <ScrollView>
           { /*=========== TOPO (HEADER) =============*/}
@@ -47,35 +107,45 @@ import {
 
                 <View style={styles.blocoAuth}>
                   <Text style={styles.label}>Nome</Text>
-                  <TextInput placeholder='Digite seu nome' 
+                  <TextInput placeholder='Digite seu nome'
+                            value={nome} 
+                            onChangeText={setNome}
                             style={styles.input}>
                   </TextInput>
                 
                   <Text style={styles.label}>Email</Text>
                   <TextInput placeholder='Digite seu email' 
                              keyboardType='email-address'
+                             value={email} 
+                             onChangeText={setEmail}
                              style={styles.input}>
                   </TextInput>
 
                   <Text style={styles.label}>Senha</Text>
                   <TextInput placeholder='Digite sua senha' 
                              secureTextEntry={true}
+                             value={senha} 
+                             onChangeText={setSenha}
                              style={styles.input}>
                   </TextInput>
 
                   <Text style={styles.label}>Confirma senha</Text>
                   <TextInput placeholder='Digite sua senha novamente' 
                              secureTextEntry={true}
+                             value={confirmarSenha} 
+                             onChangeText={setConfirmarSenha}
                              style={styles.input}>
                   </TextInput>
 
-                  <TouchableOpacity style = {styles.btnPrimario}>
+                  <TouchableOpacity style = {styles.btnPrimario} 
+                                    onPress={validarCadastro}>
                     <Text style= {styles.textoBotao}>
                       Cadastrar
                     </Text>
                   </TouchableOpacity>
 
-                  <Text style={styles.mensagemAuth}></Text>
+                  <Text style={tipoMensagem === "erro" ? 
+                              styles.mensagemErro : styles.mensagemSucesso}>{mensagemSistema}</Text>
 
                   <Text style={styles.linkAuth}>
                     Já possui uma conta?
@@ -232,7 +302,20 @@ import {
           textAlign: 'center'
         },
 
-  
+        mensagemSucesso: {
+          textAlign: 'center',
+          fontWeight: 'bold',
+          color:"green",
+          marginTop: 15
+      },
+
+      mensagemErro: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color:"red",
+        marginTop: 15
+      },
+      
       rodape: {
         backgroundColor: '#1a4db3',
         padding: 20,
