@@ -85,8 +85,8 @@ export default function Index() {
 
           { /* CARD 1 */}
           <View style = {styles.card}>
-            <Text style = {styles.cardTitulo}>Projetos Reais</Text> { /* Título */}
-            <Text style = {styles.cardDescricao}> { /* Descrição */}
+            <Text style = {styles.cardTitulo}>Projetos Reais</Text> 
+            <Text style = {styles.cardDescricao}> 
               Você desenvolve sites com base em situações profissionais
             </Text>
           </View>
