@@ -8,7 +8,8 @@ import {
    } from 'react-native'; // Importa os componentes View e Text
    import {Link} from 'expo-router';
    import {useState} from 'react';
-
+   import {Header} from '../../components/Header'
+   import {Footer} from '../../components/Footer'
    const API_URL = "http://localhost:3000"
    
   export default function Cadastro() {
@@ -121,27 +122,7 @@ import {
       <ScrollView>
           { /*=========== TOPO (HEADER) =============*/}
           { /*=========== Área de cabeçalho com logo e menu =============*/}
-          <View style={styles.topo}>
-  
-          { /* Logo do sistema */}
-          <Link href='/'>
-            <Text style={styles.logoP1}>Tech</Text>
-            <Text style={styles.logoP2}>Educa</Text>
-          </Link>
-  
-            { /* Menu de Navegação */}
-            <View style={styles.menu}>
-              <Link href='/'>
-                <Text style={styles.menuItem}> Início </Text>
-              </Link>
-              <Link href='/sobre'>
-                <Text style={styles.menuItem}> Sobre </Text>
-              </Link>
-              <Link href='/contato'>
-                <Text style={styles.menuItem}> Contato </Text>
-              </Link>
-            </View>
-          </View>
+          <Header ativo = "cadastro"> </Header>
 
           { /*=========== CONTEÚDO DA PÁGINA =============*/}
           <View style={styles.container}>
@@ -210,16 +191,7 @@ import {
           </View>
 
           { /*=========== RODAPÉ =============*/}
-          { /* Parte final da página */}
-          <View style={styles.rodape}>
-            { /* Texto de direitos de autorais */}
-            <Text style={styles.textoRodape}> 2026 TechEduca. Todos os direitos reservados.</Text>
-  
-            { /* Links de Contato */}
-            <Link href='/contato'>
-              <Text style={styles.linkRodape}>Entre em contato</Text>'
-            </Link>
-          </View>
+          <Footer></Footer>
   
       </ScrollView>
    );
